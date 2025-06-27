@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:indrive_client/presentation/page/auth/login/bloc/login_bloc.dart';
 import 'package:indrive_client/presentation/page/auth/utils/bloc_form_item.dart';
 import 'package:indrive_client/presentation/widgets/default_button.dart';
@@ -69,7 +70,7 @@ class LoginContent extends StatelessWidget {
                         );
                       },
                       validator: (value) {
-                        return context.read<LoginBloc>().state.email.error;
+                        return state.email.error;
                       },
                       text: 'Email',
                       icon: Icons.email_outlined,
@@ -83,7 +84,7 @@ class LoginContent extends StatelessWidget {
                         );
                       },
                       validator: (value) {
-                        return context.read<LoginBloc>().state.password.error;
+                        return state.password.error;
                       },
                       text: 'Password',
                       icon: Icons.lock_outline,
@@ -92,11 +93,12 @@ class LoginContent extends StatelessWidget {
                     SizedBox(height: MediaQuery.of(context).size.height * 0.01),
 
                     DefaultButton(
-                      text: 'Login rey',
+                      text: 'Login',
                       onPressed: () {
-                        if (state.formKey!.currentState!.validate()) {
+                        if (state!.formKey!.currentState!.validate()) {
                           context.read<LoginBloc>().add(FormSubmitEvent());
                         } else {
+                          print(state.formKey!.currentState!.validate());
                           print('El formulario no es valido');
                         }
                       },

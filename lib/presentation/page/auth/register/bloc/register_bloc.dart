@@ -1,15 +1,20 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import 'package:indrive_client/domain/models/auth_response.dart';
+import 'package:indrive_client/domain/models/user.dart';
+import 'package:indrive_client/domain/use_cases/auth/auth_use_cases.dart';
+import 'package:indrive_client/domain/utils/resource.dart';
 import 'package:indrive_client/presentation/page/auth/utils/bloc_form_item.dart';
 
 part 'register_event.dart';
 part 'register_state.dart';
 
 class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
+  AuthUseCases authUseCases;
   final formKey = GlobalKey<FormState>();
 
-  RegisterBloc() : super(RegisterState()) {
+  RegisterBloc(this.authUseCases) : super(RegisterState()) {
     on<RegisterInitialEvent>((event, emit) {
       emit(state.copyWith(formKey: formKey));
     });
@@ -89,14 +94,30 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
         ),
       );
     });
+    on<SaveUserSessionEvent>((event, emit) async {
+      await authUseCases.saveUserSession.run(event.authResponse);
+    });
+    on<FormSubmitEvent>((event, emit) async {
+      print('Reynaldo');
+      emit(state.copyWith(response: Loading(), formKey: formKey));
 
-    on<FormSubmitEvent>((event, emit) {
-      print('Nombre: ${state.nombre.value}');
-      print('Apellido: ${state.apellido.value}');
-      print('Email: ${state.email.value}');
-      print('Teléfono: ${state.telefono.value}');
-      print('Password: ${state.password.value}');
-      print('Confirmar Password: ${state.confirmarPassword.value}');
+      Resource response = await authUseCases.register.run(state.toUser());
+      print(response);
+      emit(state.copyWith(response: response, formKey: formKey));
+    });
+
+    on<FormResetEvent>((event, emit) {
+      emit(
+        state.copyWith(
+          nombre: BlocFormItem(),
+          apellido: BlocFormItem(),
+          telefono: BlocFormItem(),
+          email: BlocFormItem(),
+          password: BlocFormItem(),
+          confirmarPassword: BlocFormItem(),
+          formKey: formKey,
+        ),
+      );
     });
   }
 }

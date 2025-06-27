@@ -16,4 +16,10 @@ class PasswordChangedEvent extends LoginEvent {
   PasswordChangedEvent({required this.passsword});
 }
 
+class SaveUserSessionEvent extends LoginEvent {
+  final AuthResponse authResponse;
+
+  SaveUserSessionEvent({required this.authResponse});
+}
+
 class FormSubmitEvent extends LoginEvent {}

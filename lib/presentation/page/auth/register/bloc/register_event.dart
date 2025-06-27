@@ -35,4 +35,12 @@ class ConfirmarPasswordChangedEvent extends RegisterEvent {
   ConfirmarPasswordChangedEvent({required this.confirmarPassword});
 }
 
+class SaveUserSessionEvent extends RegisterEvent {
+  final AuthResponse authResponse;
+
+  SaveUserSessionEvent({required this.authResponse});
+}
+
+class FormResetEvent extends RegisterEvent {}
+
 class FormSubmitEvent extends RegisterEvent {}

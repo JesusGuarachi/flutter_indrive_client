@@ -9,6 +9,7 @@ class RegisterState extends Equatable {
   final BlocFormItem telefono;
   final BlocFormItem password;
   final BlocFormItem confirmarPassword;
+  final Resource? response;
 
   const RegisterState({
     this.nombre = const BlocFormItem(error: 'Ingrese el nombre'),
@@ -20,7 +21,15 @@ class RegisterState extends Equatable {
       error: 'Confirme la contraseña',
     ),
     this.formKey,
+    this.response,
   });
+
+  toUser() => User(
+    name: nombre.value,
+    lastname: apellido.value,
+    email: email.value,
+    phone: telefono.value,
+  );
 
   @override
   List<Object?> get props => [
@@ -30,6 +39,7 @@ class RegisterState extends Equatable {
     telefono,
     password,
     confirmarPassword,
+    response,
   ];
 
   RegisterState copyWith({
@@ -39,6 +49,7 @@ class RegisterState extends Equatable {
     BlocFormItem? telefono,
     BlocFormItem? password,
     BlocFormItem? confirmarPassword,
+    Resource? response,
     GlobalKey<FormState>? formKey,
   }) {
     return RegisterState(
@@ -48,6 +59,7 @@ class RegisterState extends Equatable {
       telefono: telefono ?? this.telefono,
       password: password ?? this.password,
       confirmarPassword: confirmarPassword ?? this.confirmarPassword,
+      response: response ?? this.response,
       formKey: formKey,
     );
   }

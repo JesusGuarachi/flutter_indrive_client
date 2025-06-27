@@ -24,7 +24,7 @@ class DefaultButton extends StatelessWidget {
         },
         style: ElevatedButton.styleFrom(backgroundColor: color),
         child: Text(
-          'Login',
+          text,
           style: TextStyle(
             fontSize: 20,
             color: Colors.white,
