@@ -40,7 +40,6 @@ class LoginContent extends StatelessWidget {
           ),
           Container(
             margin: EdgeInsets.only(left: 60, bottom: 60),
-
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.topRight,
@@ -95,7 +94,8 @@ class LoginContent extends StatelessWidget {
                     DefaultButton(
                       text: 'Login',
                       onPressed: () {
-                        if (state!.formKey!.currentState!.validate()) {
+                        if (state.formKey!.currentState!.validate()) {
+                          print('El formulario  es valido');
                           context.read<LoginBloc>().add(FormSubmitEvent());
                         } else {
                           print(state.formKey!.currentState!.validate());

@@ -25,7 +25,7 @@ class _LoginPageState extends State<LoginPage> {
               msg: '${response.message}',
               toastLength: Toast.LENGTH_SHORT,
               gravity: ToastGravity.BOTTOM,
-              backgroundColor: Colors.redAccent,
+              backgroundColor: const Color.fromARGB(255, 186, 82, 255),
               textColor: Colors.white,
               fontSize: 16.0,
             );

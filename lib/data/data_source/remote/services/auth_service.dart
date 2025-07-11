@@ -18,6 +18,7 @@ class AuthService {
       final data = jsonDecode(response.body);
       if (response.statusCode == HttpStatus.accepted ||
           response.statusCode == HttpStatus.created) {
+        print(data);
         AuthResponse authResponse = AuthResponse.fromJson(data);
 
         return Success(authResponse);

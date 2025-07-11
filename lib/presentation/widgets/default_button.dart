@@ -20,6 +20,7 @@ class DefaultButton extends StatelessWidget {
       width: MediaQuery.of(context).size.width,
       child: ElevatedButton(
         onPressed: () {
+          print('object');
           onPressed();
         },
         style: ElevatedButton.styleFrom(backgroundColor: color),

@@ -5,6 +5,7 @@ import 'package:indrive_client/domain/repository/auth_repository.dart';
 import 'package:indrive_client/domain/use_cases/auth/auth_use_cases.dart';
 import 'package:indrive_client/domain/use_cases/auth/get_user_session_use_case.dart';
 import 'package:indrive_client/domain/use_cases/auth/login_use_case.dart';
+import 'package:indrive_client/domain/use_cases/auth/logout_use_case.dart';
 import 'package:indrive_client/domain/use_cases/auth/register_use_case.dart';
 import 'package:indrive_client/domain/use_cases/auth/save_user_session_use_case.dart';
 import 'package:injectable/injectable.dart';
@@ -24,5 +25,6 @@ abstract class AppModule {
     register: RegisterUseCase(repository: authRepository),
     saveUserSession: SaveUserSessionUseCase(authRepository: authRepository),
     getUserSession: GetUserSessionUseCase(authRepository: authRepository),
+    logout: LogoutUseCase(authRepository: authRepository),
   );
 }

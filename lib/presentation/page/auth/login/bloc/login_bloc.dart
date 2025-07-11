@@ -1,10 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:indrive_client/data/data_source/remote/services/auth_service.dart';
 import 'package:indrive_client/domain/models/auth_response.dart';
 import 'package:indrive_client/domain/use_cases/auth/auth_use_cases.dart';
-import 'package:indrive_client/domain/use_cases/auth/login_use_case.dart';
 import 'package:indrive_client/domain/utils/resource.dart';
 import 'package:indrive_client/presentation/page/auth/utils/bloc_form_item.dart';
 
@@ -19,7 +17,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   LoginBloc(this.authUseCases) : super(LoginState()) {
     on<LoginInitialEvent>((event, emit) async {
       AuthResponse? authResponse = await authUseCases.getUserSession.run();
-      print('authResponse: ${authResponse?.toJson()}');
+      print('Reynaldo: ${authResponse?.toJson()}');
       emit(state.copyWith(formKey: formKey));
       if (authResponse != null) {
         emit(state.copyWith(response: Success(authResponse), formKey: formKey));

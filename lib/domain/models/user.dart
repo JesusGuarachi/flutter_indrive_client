@@ -9,8 +9,6 @@ class User {
   final String? image;
   final String? password;
   final String? notificationToken;
-  final DateTime? createdAt;
-  final DateTime? updatedAt;
   final List<Role>? roles;
 
   User({
@@ -22,8 +20,6 @@ class User {
     this.image,
     this.password,
     this.notificationToken,
-    this.createdAt,
-    this.updatedAt,
     this.roles,
   });
 

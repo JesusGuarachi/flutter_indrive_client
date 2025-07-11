@@ -23,6 +23,7 @@ class LoginState extends Equatable {
     GlobalKey<FormState>? formKey,
     Resource? response,
   }) {
+    print('copyWith ${response}');
     return LoginState(
       email: email ?? this.email,
       password: password ?? this.password,

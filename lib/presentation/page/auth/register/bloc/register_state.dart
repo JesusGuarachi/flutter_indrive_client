@@ -29,6 +29,7 @@ class RegisterState extends Equatable {
     lastname: apellido.value,
     email: email.value,
     phone: telefono.value,
+    password: password.value,
   );
 
   @override

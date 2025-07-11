@@ -29,7 +29,6 @@ class _RegisterPageState extends State<RegisterPage> {
               textColor: Colors.white,
               fontSize: 16.0,
             );
-            print('Error data ${response.message}');
           }
           if (response is Success) {
             context.read<RegisterBloc>().add(FormResetEvent());
