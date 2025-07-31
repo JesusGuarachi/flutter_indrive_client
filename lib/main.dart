@@ -6,6 +6,7 @@ import 'package:indrive_client/injection.dart';
 import 'package:indrive_client/presentation/page/auth/login/login_page.dart';
 import 'package:indrive_client/presentation/page/auth/register/register_page.dart';
 import 'package:indrive_client/presentation/page/client/home/client_home_page.dart';
+import 'package:indrive_client/presentation/page/profile/update/profile_update_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -34,6 +35,7 @@ class MyApp extends StatelessWidget {
           'login': (BuildContext context) => LoginPage(),
           'register': (BuildContext context) => RegisterPage(),
           'client/home': (BuildContext context) => ClientHomePage(),
+          'profile/update': (BuildContext context) => ProfileUpdatePage(),
         },
       ),
     );

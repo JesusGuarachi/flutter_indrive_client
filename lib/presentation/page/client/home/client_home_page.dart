@@ -4,7 +4,7 @@ import 'package:indrive_client/main.dart';
 import 'package:indrive_client/presentation/page/client/home/bloc/client_home_bloc.dart';
 import 'package:indrive_client/presentation/page/client/home/bloc/client_home_event.dart';
 import 'package:indrive_client/presentation/page/client/home/bloc/client_home_state.dart';
-import 'package:indrive_client/presentation/page/profile/info/profile_file_info_page.dart';
+import 'package:indrive_client/presentation/page/profile/info/profile_info_page.dart';
 
 class ClientHomePage extends StatefulWidget {
   const ClientHomePage({super.key});
@@ -14,7 +14,7 @@ class ClientHomePage extends StatefulWidget {
 }
 
 class _ClientHomePageState extends State<ClientHomePage> {
-  List<Widget> pageList = [ProfileFileInfoPage()];
+  List<Widget> pageList = [ProfileInfoPage()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(

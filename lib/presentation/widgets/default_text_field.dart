@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 class DefaultTextField extends StatelessWidget {
   final Function(String text) onChanged;
   final String text;
+  String? intialValue;
   final IconData icon;
   final EdgeInsetsGeometry margin;
   String? Function(String?)? validator;
+  final Color backgroundColor;
   DefaultTextField({
     required this.onChanged,
     super.key,
@@ -13,6 +15,8 @@ class DefaultTextField extends StatelessWidget {
     required this.icon,
     this.margin = const EdgeInsets.only(top: 40, left: 20, right: 20),
     this.validator,
+    this.backgroundColor = Colors.white,
+    this.intialValue,
   });
 
   @override
@@ -21,13 +25,14 @@ class DefaultTextField extends StatelessWidget {
       margin: margin,
       height: 55,
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: backgroundColor,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(15),
           bottomRight: Radius.circular(15),
         ),
       ),
       child: TextFormField(
+        initialValue: intialValue,
         onChanged: (text) {
           onChanged(text);
         },
